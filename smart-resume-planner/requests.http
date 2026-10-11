@@ -1,0 +1,37 @@
+### Variables: set token after login
+@host = http://localhost:8080
+
+### Register
+POST {{host}}/api/auth/register
+Content-Type: application/json
+
+{"email":"you@example.com","password":"StrongPass#123","fullName":"Your Name"}
+
+### Login (copy accessToken into @token below)
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{"email":"you@example.com","password":"StrongPass#123"}
+
+###
+@token = PASTE_ACCESS_TOKEN
+
+### Me
+GET {{host}}/api/auth/me
+Authorization: Bearer {{token}}
+
+### Upload resume
+POST {{host}}/api/resumes
+Authorization: Bearer {{token}}
+Content-Type: multipart/form-data; boundary=B
+
+--B
+Content-Disposition: form-data; name="file"; filename="resume.pdf"
+Content-Type: application/pdf
+
+< ./resume.pdf
+--B--
+
+### List resumes
+GET {{host}}/api/resumes
+Authorization: Bearer {{token}}

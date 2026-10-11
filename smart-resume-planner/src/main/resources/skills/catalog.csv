@@ -1,0 +1,168 @@
+# name|TYPE|group|aliases (semicolon separated; '!' = case-sensitive; trailing '*' = word-prefix wildcard)
+Java|HARD|jvm-lang|
+Kotlin|HARD|jvm-lang|
+Scala|HARD|jvm-lang|
+Groovy|HARD|jvm-lang|
+Python|HARD|scripting-lang|
+JavaScript|HARD|js-lang|js;ecmascript;es6
+TypeScript|HARD|js-lang|ts
+C++|HARD|native-lang|cpp
+C#|HARD|dotnet-lang|csharp;c-sharp
+Go|HARD|native-lang|!Go;golang
+Rust|HARD|native-lang|
+PHP|HARD|scripting-lang|
+Ruby|HARD|scripting-lang|
+Swift|HARD|mobile|!Swift
+Dart|HARD|mobile|
+Bash|HARD|scripting-lang|shell scripting;shell script;shell
+SQL|HARD|sql-db|t-sql;pl/sql;plsql
+HTML|HARD|web-basics|html5
+CSS|HARD|web-basics|css3
+Sass|HARD|web-basics|scss
+Spring Boot|HARD|spring|springboot;spring-boot
+Spring|HARD|spring|spring framework;spring mvc
+Spring Security|HARD|spring|
+Spring Data JPA|HARD|spring|spring data;spring-data
+Spring AI|HARD|spring|
+Hibernate|HARD|orm|
+JPA|HARD|orm|java persistence api
+MyBatis|HARD|orm|
+Maven|TOOL|build-tool|
+Gradle|TOOL|build-tool|
+JUnit|HARD|testing|junit5;junit 5
+Mockito|HARD|testing|
+Selenium|HARD|testing|
+Cypress|HARD|testing|
+Jest|HARD|testing|
+Playwright|HARD|testing|
+Testcontainers|HARD|testing|
+React|HARD|frontend-fw|react.js;reactjs;react js
+Angular|HARD|frontend-fw|angularjs;angular.js
+Vue|HARD|frontend-fw|vue.js;vuejs;vue js
+Svelte|HARD|frontend-fw|
+Next.js|HARD|frontend-fw|nextjs;next js
+Redux|HARD|frontend-lib|
+Tailwind CSS|HARD|css-fw|tailwind;tailwindcss
+Bootstrap|HARD|css-fw|
+Vite|TOOL|build-tool|
+Webpack|TOOL|build-tool|
+Node.js|HARD|backend-js|nodejs;node js
+Express|HARD|backend-js|!Express;express.js;expressjs
+NestJS|HARD|backend-js|nest.js
+Django|HARD|python-fw|
+Flask|HARD|python-fw|
+FastAPI|HARD|python-fw|fast api
+.NET|HARD|dotnet-lang|dotnet;.net core;asp.net;asp.net core
+Laravel|HARD|php-fw|
+Rails|HARD|ruby-fw|ruby on rails
+Flutter|HARD|mobile|
+React Native|HARD|mobile|
+Android|HARD|mobile|
+iOS|HARD|mobile|
+REST API|HARD|api|rest;restful;rest apis;restful api;restful apis;rest api
+GraphQL|HARD|api|
+gRPC|HARD|api|
+Microservices|HARD|architecture|microservice;micro-services;micro services;microservices architecture
+System Design|HARD|architecture|
+Event-Driven Architecture|HARD|architecture|event driven;event-driven
+Design Patterns|HARD|architecture|
+OOP|HARD|architecture|object oriented;object-oriented;oop
+Data Structures|HARD|cs-core|data structures and algorithms;dsa;algorithms
+MySQL|HARD|sql-db|
+PostgreSQL|HARD|sql-db|postgres;postgresql
+Oracle Database|HARD|sql-db|oracle db;oracle
+SQL Server|HARD|sql-db|mssql;microsoft sql server
+SQLite|HARD|sql-db|
+MariaDB|HARD|sql-db|
+MongoDB|HARD|nosql-db|mongo
+Redis|HARD|nosql-db|
+Cassandra|HARD|nosql-db|
+DynamoDB|HARD|nosql-db|
+Elasticsearch|HARD|search|elastic search;opensearch
+Kafka|HARD|messaging|apache kafka
+RabbitMQ|HARD|messaging|rabbit mq
+ActiveMQ|HARD|messaging|
+Flyway|TOOL|db-migration|
+Liquibase|TOOL|db-migration|
+AWS|HARD|cloud|amazon web services;ec2;s3;aws lambda
+Azure|HARD|cloud|microsoft azure
+Google Cloud|HARD|cloud|gcp;google cloud platform
+Docker|TOOL|containers|dockerfile;docker compose;docker-compose
+Kubernetes|TOOL|containers|k8s;kubectl;helm
+Terraform|TOOL|iac|
+Ansible|TOOL|iac|
+Jenkins|TOOL|ci-cd|
+GitHub Actions|TOOL|ci-cd|
+GitLab CI|TOOL|ci-cd|gitlab ci/cd;gitlab-ci
+CI/CD|HARD|ci-cd|cicd;ci cd;continuous integration;continuous delivery;continuous deployment
+DevOps|HARD|ci-cd|
+Linux|HARD|os|unix
+Git|TOOL|vcs|github;gitlab;bitbucket;version control
+Jira|TOOL|pm-tool|
+Postman|TOOL|api-tool|
+Swagger|TOOL|api-tool|openapi;springdoc
+Figma|TOOL|design-tool|
+IntelliJ|TOOL|ide|intellij idea
+Eclipse|TOOL|ide|
+VS Code|TOOL|ide|visual studio code;vscode
+Nginx|TOOL|web-server|
+Apache Tomcat|TOOL|web-server|tomcat
+Prometheus|TOOL|observability|
+Grafana|TOOL|observability|
+Datadog|TOOL|observability|
+Splunk|TOOL|observability|
+ELK Stack|TOOL|observability|elk;logstash;kibana
+OAuth2|HARD|security|oauth;oauth 2.0;oauth 2
+JWT|HARD|security|json web token;json web tokens
+Authentication|HARD|security|authorization;authn;authz
+OWASP|HARD|security|
+Cybersecurity|HARD|security|information security;infosec;application security
+Machine Learning|HARD|ml|ml;machine-learning
+Deep Learning|HARD|ml|neural networks
+NLP|HARD|ml|natural language processing
+Generative AI|HARD|ml|genai;gen ai;generative ai;llm;llms;large language models;prompt engineering
+LangChain|HARD|ml|
+TensorFlow|HARD|ml|
+PyTorch|HARD|ml|
+scikit-learn|HARD|ml|sklearn;scikit learn
+Pandas|HARD|data|
+NumPy|HARD|data|
+Apache Spark|HARD|data|!Spark;pyspark
+Hadoop|HARD|data|
+Airflow|TOOL|data|apache airflow
+ETL|HARD|data|data pipelines;data pipeline;elt
+Data Analysis|HARD|data|data analytics;data analyst
+Tableau|TOOL|bi|
+Power BI|TOOL|bi|powerbi
+Excel|TOOL|office|!Excel;microsoft excel;ms excel
+Agile|HARD|process|scrum;kanban;sprint;sprints
+TDD|HARD|testing|test driven development;test-driven development
+Unit Testing|HARD|testing|unit tests;unit test
+API Testing|HARD|testing|
+Performance Tuning|HARD|performance|performance optimization;performance optimisation;profiling
+Concurrency|HARD|performance|multithreading;multi-threading;multithreaded;concurrent programming
+WebSocket|HARD|api|websockets;web socket;sse;server-sent events
+Caching|HARD|performance|cache
+Responsive Design|HARD|web-basics|responsive web design;mobile-first
+Accessibility|HARD|web-basics|wcag;a11y
+SEO|HARD|web-basics|
+AWS Certified|CERTIFICATION|cert-aws|aws certified solutions architect;aws certification;aws certified developer
+PMP|CERTIFICATION|cert-pm|project management professional
+Scrum Master|CERTIFICATION|cert-pm|csm;psm;certified scrum master
+Oracle Certified|CERTIFICATION|cert-oracle|ocp;oracle certified professional;oca
+CISSP|CERTIFICATION|cert-sec|
+Communication|SOFT|soft|communicat*;presentation skills;presented;presentations;stakeholder management
+Leadership|SOFT|soft|leadership;led;leading;mentor*;managed a team;team lead;people management
+Teamwork|SOFT|soft|team player;collaborat*;cross-functional;cross functional;teamwork
+Problem Solving|SOFT|soft|problem-solving;problem solver;troubleshoot*;root cause;debugg*
+Time Management|SOFT|soft|prioritiz*;prioritis*;deadlines;time-management
+Adaptability|SOFT|soft|adaptab*;flexib*;fast-paced;fast paced
+Critical Thinking|SOFT|soft|analytical;critical-thinking;analytical skills
+Creativity|SOFT|soft|creative;innovati*
+Attention to Detail|SOFT|soft|detail-oriented;detail oriented;meticulous
+Ownership|SOFT|soft|self-starter;self starter;take ownership;ownership;proactive;initiative
+Customer Focus|SOFT|soft|customer-focused;customer focused;customer service;client-facing;client facing
+Negotiation|SOFT|soft|negotiat*
+Project Management|SOFT|soft|project planning;program management;delivery management
+Mentoring|SOFT|soft|coaching;coached;mentoring
+Documentation|SOFT|soft|technical writing;documented;documentation

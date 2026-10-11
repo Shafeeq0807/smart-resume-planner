@@ -1,0 +1,19 @@
+# Local dev dependencies: `docker compose up -d`
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: smart_resume
+      MYSQL_USER: sra
+      MYSQL_PASSWORD: sra_dev_password
+      MYSQL_ROOT_PASSWORD: root_dev_password
+    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_0900_ai_ci"]
+    ports: ["3306:3306"]
+    volumes: ["mysql-data:/var/lib/mysql"]
+  ollama:
+    image: ollama/ollama:latest
+    ports: ["11434:11434"]
+    volumes: ["ollama-data:/root/.ollama"]
+volumes:
+  mysql-data:
+  ollama-data:

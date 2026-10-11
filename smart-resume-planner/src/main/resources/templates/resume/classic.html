@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title th:text="${doc.contact().fullName() + ' - Resume'}">Resume</title>
+  <style type="text/css" th:inline="none">
+    body { font-family: serif; color: #111111; line-height: 1.3; }
+    .header { text-align: center; margin-bottom: 8px; }
+    h1 { font-size: 22pt; margin: 0 0 2px 0; font-weight: bold; }
+    .headline { font-size: 12pt; margin-bottom: 3px; }
+    .contact { font-size: 9.5pt; }
+    h2 { font-size: 11.5pt; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #333333; margin: 12px 0 5px 0; padding-bottom: 1px; }
+    .entry { margin-bottom: 7px; page-break-inside: avoid; }
+    .entry-head { font-size: 1em; }
+    .title { font-weight: bold; }
+    .dates { font-style: italic; font-size: 0.92em; }
+    ul { margin: 3px 0 0 0; padding-left: 16px; }
+    li { margin-bottom: 2px; }
+    p { margin: 2px 0; }
+    .tech { font-size: 0.92em; font-style: italic; }
+  </style>
+  <style type="text/css" th:inline="css">
+    @page { size: A4; margin: [[${s.margin()}]]mm; }
+    body { font-size: [[${s.font()}]]pt; }
+    h2 { color: [[${s.accent()}]]; border-bottom-color: [[${s.accent()}]]; }
+    h1 { color: [[${s.accent()}]]; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1 th:text="${doc.contact().fullName()}">Full Name</h1>
+    <div class="headline" th:if="${!#strings.isEmpty(doc.contact().headline())}" th:text="${doc.contact().headline()}">Headline</div>
+    <div class="contact">
+      <span th:if="${!#strings.isEmpty(doc.contact().email())}" th:text="${doc.contact().email()}">email</span>
+      <span th:if="${!#strings.isEmpty(doc.contact().phone())}" th:text="${' | ' + doc.contact().phone()}">phone</span>
+      <span th:if="${!#strings.isEmpty(doc.contact().location())}" th:text="${' | ' + doc.contact().location()}">location</span>
+      <span th:each="l : ${doc.contact().links()}" th:text="${' | ' + l}">link</span>
+    </div>
+  </div>
+
+  <div class="section" th:if="${!#strings.isEmpty(doc.summary())}">
+    <h2>Summary</h2>
+    <p th:text="${doc.summary()}">Summary</p>
+  </div>
+  <div class="section" th:if="${!#lists.isEmpty(doc.experience())}">
+    <h2>Experience</h2>
+    <div class="entry" th:each="e : ${doc.experience()}">
+      <div class="entry-head">
+        <span class="title" th:text="${e.title()}">Title</span>
+        <span th:if="${!#strings.isEmpty(e.company())}" th:text="${' | ' + e.company()}">Company</span>
+        <span th:if="${!#strings.isEmpty(e.location())}" th:text="${' | ' + e.location()}">Location</span>
+      </div>
+      <div class="dates" th:if="${!#strings.isEmpty(e.startDate()) or !#strings.isEmpty(e.endDate())}"
+           th:text="${e.startDate() + (#strings.isEmpty(e.startDate()) or #strings.isEmpty(e.endDate()) ? '' : ' - ') + e.endDate()}">Dates</div>
+      <ul th:if="${!#lists.isEmpty(e.bullets())}">
+        <li th:each="b : ${e.bullets()}" th:text="${b}">Bullet</li>
+      </ul>
+    </div>
+  </div>
+  <div class="section" th:if="${!#lists.isEmpty(doc.projects())}">
+    <h2>Projects</h2>
+    <div class="entry" th:each="p : ${doc.projects()}">
+      <div class="entry-head">
+        <span class="title" th:text="${p.name()}">Project</span>
+        <span th:if="${!#strings.isEmpty(p.url())}" th:text="${' | ' + p.url()}">url</span>
+      </div>
+      <p class="desc" th:if="${!#strings.isEmpty(p.description())}" th:text="${p.description()}">Description</p>
+      <ul th:if="${!#lists.isEmpty(p.bullets())}">
+        <li th:each="b : ${p.bullets()}" th:text="${b}">Bullet</li>
+      </ul>
+      <div class="tech" th:if="${!#lists.isEmpty(p.technologies())}" th:text="${'Technologies: ' + #strings.listJoin(p.technologies(), ', ')}">Tech</div>
+    </div>
+  </div>
+  <div class="section" th:if="${!#lists.isEmpty(doc.education())}">
+    <h2>Education</h2>
+    <div class="entry" th:each="ed : ${doc.education()}">
+      <div class="entry-head">
+        <span class="title" th:text="${ed.degree()}">Degree</span>
+        <span th:if="${!#strings.isEmpty(ed.institution())}" th:text="${' | ' + ed.institution()}">Institution</span>
+      </div>
+      <div class="dates" th:if="${!#strings.isEmpty(ed.startDate()) or !#strings.isEmpty(ed.endDate())}"
+           th:text="${ed.startDate() + (#strings.isEmpty(ed.startDate()) or #strings.isEmpty(ed.endDate()) ? '' : ' - ') + ed.endDate()}">Dates</div>
+      <p class="desc" th:if="${!#strings.isEmpty(ed.details())}" th:text="${ed.details()}">Details</p>
+    </div>
+  </div>
+  <div class="section" th:if="${!#lists.isEmpty(doc.skills())}">
+    <h2>Skills</h2>
+    <p th:text="${#strings.listJoin(doc.skills(), ', ')}">Skills</p>
+  </div>
+  <div class="section" th:if="${!#lists.isEmpty(doc.certifications())}">
+    <h2>Certifications</h2>
+    <ul>
+      <li th:each="c : ${doc.certifications()}" th:text="${c}">Certification</li>
+    </ul>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="430" viewBox="0 0 1000 430" role="img" aria-label="Architecture: React frontend, Spring Boot API, MySQL, file storage, and LLM providers">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="430" rx="12" fill="#f8fafc"/>
+
+  <!-- Browser -->
+  <rect x="30" y="150" width="190" height="110" rx="10" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <text x="125" y="186" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#0c4a6e">React SPA</text>
+  <text x="125" y="210" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#0c4a6e">TypeScript · Vite</text>
+  <text x="125" y="230" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#0c4a6e">runs in the browser</text>
+
+  <!-- API -->
+  <rect x="300" y="110" width="250" height="190" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="425" y="146" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#14532d">Spring Boot API</text>
+  <text x="425" y="172" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#14532d">controllers → services</text>
+  <text x="425" y="192" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#14532d">JWT security · Flyway</text>
+  <text x="425" y="212" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#14532d">ATS · matching · optimizer</text>
+  <text x="425" y="232" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#14532d">tracker · chat · export</text>
+  <text x="425" y="262" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#166534">Java 21 · virtual threads</text>
+
+  <!-- MySQL -->
+  <ellipse cx="740" cy="90" rx="110" ry="28" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <rect x="630" y="90" width="220" height="70" fill="#fef3c7" stroke="none"/>
+  <path d="M630 90 V160 A110 28 0 0 0 850 160 V90" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <ellipse cx="740" cy="90" rx="110" ry="28" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="740" y="142" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700" fill="#78350f">MySQL 8</text>
+  <text x="740" y="164" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#78350f">schema by Flyway</text>
+
+  <!-- File storage -->
+  <rect x="650" y="250" width="180" height="60" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="740" y="276" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#4c1d95">File storage</text>
+  <text x="740" y="296" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#4c1d95">local disk or S3</text>
+
+  <!-- LLM providers -->
+  <rect x="300" y="340" width="250" height="70" rx="10" fill="#fce7f3" stroke="#db2777" stroke-width="2"/>
+  <text x="425" y="366" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#831843">LLM providers</text>
+  <text x="425" y="388" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#831843">AIML API · OpenAI · Groq · Ollama</text>
+
+  <!-- GitHub -->
+  <rect x="800" y="180" width="170" height="54" rx="10" fill="#f1f5f9" stroke="#475569" stroke-width="2"/>
+  <text x="885" y="203" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a">GitHub API</text>
+  <text x="885" y="222" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#334155">repo analysis</text>
+
+  <!-- Edges -->
+  <line x1="220" y1="205" x2="298" y2="205" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="259" y="196" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#475569">/api + JWT</text>
+  <line x1="550" y1="170" x2="628" y2="130" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="550" y1="250" x2="648" y2="272" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="425" y1="300" x2="425" y2="338" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="550" y1="200" x2="798" y2="205" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+</svg>

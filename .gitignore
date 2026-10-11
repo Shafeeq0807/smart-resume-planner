@@ -1,0 +1,23 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+.project
+.classpath
+.settings/
+.factorypath
+.sts4-cache/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log

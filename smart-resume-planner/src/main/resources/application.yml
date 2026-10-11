@@ -1,0 +1,180 @@
+# AI profiles: aiml (default, AIML API) | openai | groq | ollama (local, no key)
+#   AIML_API_KEY=... ./mvnw spring-boot:run
+#   SPRING_PROFILES_ACTIVE=groq GROQ_API_KEY=... ./mvnw spring-boot:run
+spring:
+  application:
+    name: smart-resume-planner
+  profiles:
+    default: aiml
+  threads:
+    virtual:
+      enabled: true                      # Tomcat + @Async on Java 21 virtual threads
+  datasource:
+    url: jdbc:mysql://localhost:3306/smart_resume_planner
+    username: ${DB_USER:root}
+    password: ${DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 20
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate                 # Flyway owns the schema
+    properties:
+      hibernate:
+        jdbc:
+          "[time_zone]": UTC
+          "[batch_size]": 50
+          "[order_inserts]": true
+          "[order_updates]": true
+        type:
+          "[preferred_instant_jdbc_type]": TIMESTAMP   # Instant <-> DATETIME(6)
+  flyway:
+    locations: classpath:db/migration
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 11MB
+  ai:
+    # With both the OpenAI and Ollama starters on the classpath, each model type must be
+    # selected explicitly; unused OpenAI model types are switched off so no key is required.
+    model:
+      embedding: none
+      image: none
+      audio:
+        speech: none
+        transcription: none
+      moderation: none
+    retry:
+      max-attempts: 2
+
+server:
+  port: 8080
+  tomcat:
+    max-swallow-size: 12MB               # oversize uploads get a clean 413, not a reset
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+
+app:
+  security:
+    jwt:
+      secret: ${JWT_SECRET}              # base64, at least 256 bits; set via environment, never commit a real value
+      issuer: smart-resume-planner
+      access-token-ttl: 15m
+      refresh-token-ttl: 7d
+    cors:
+      allowed-origins: ${CORS_ORIGINS:http://localhost:5173}
+  storage:
+    type: local                          # local | s3
+    local-root: ${STORAGE_ROOT:./data/uploads}
+  upload:
+    allowed-types:
+      - application/pdf
+      - application/vnd.openxmlformats-officedocument.wordprocessingml.document
+    max-extracted-chars: 200000
+    parse-timeout: 30s
+  matching:
+    weights:
+      hard: 0.45
+      soft: 0.15
+      semantic: 0.25
+      title: 0.15
+  github:
+    api-base-url: https://api.github.com
+    token: ${GITHUB_TOKEN:}
+    max-repos: 10
+    cache-ttl: 24h
+  rate-limit:
+    ai-calls-per-hour: ${AI_CALLS_PER_HOUR:60}
+    auth-attempts-per-minute: ${AUTH_ATTEMPTS_PER_MINUTE:10}
+  ai:
+    provider: unknown                    # overridden by each AI profile below (stored in ai_usage_logs)
+
+---
+# AIML API (https://aimlapi.com) is OpenAI-compatible, so it reuses the OpenAI starter.
+spring:
+  config:
+    activate:
+      on-profile: aiml
+  ai:
+    model:
+      chat: openai
+    openai:
+      base-url: https://api.aimlapi.com
+      api-key: ${AIML_API_KEY}
+      chat:
+        options:
+          model: ${AIML_CHAT_MODEL:gpt-4o-mini}
+          temperature: 0.2
+app:
+  ai:
+    provider: aiml
+
+---
+spring:
+  config:
+    activate:
+      on-profile: openai
+  ai:
+    model:
+      chat: openai
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: ${OPENAI_CHAT_MODEL:gpt-4o-mini}
+          temperature: 0.2
+app:
+  ai:
+    provider: openai
+
+---
+# Groq exposes an OpenAI-compatible API, so it reuses the OpenAI starter.
+spring:
+  config:
+    activate:
+      on-profile: groq
+  ai:
+    model:
+      chat: openai
+    openai:
+      base-url: https://api.groq.com/v1
+      api-key: ${GROQ_API_KEY:}
+      chat:
+        options:
+          model: ${GROQ_CHAT_MODEL:llama-3.3-70b-versatile}
+          temperature: 0.2
+app:
+  ai:
+    provider: groq
+
+---
+spring:
+  config:
+    activate:
+      on-profile: ollama
+  ai:
+    model:
+      chat: ollama
+    openai:
+      api-key: unused                    # OpenAI starter is on the classpath but inactive
+    ollama:
+      base-url: ${OLLAMA_BASE_URL:http://localhost:11434}
+      chat:
+        options:
+          model: ${OLLAMA_CHAT_MODEL:llama3.1:8b}
+          temperature: 0.2
+      init:
+        pull-model-strategy: WHEN_MISSING
+app:
+  ai:
+    provider: ollama
