@@ -111,6 +111,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             <a href="/#how-it-works">How it works</a>
             <a href="/#coverage">What we check</a>
             <a href="/#faq">FAQ</a>
+            <a href="https://github.com/Shafeeq0807/smart-resume-planner" target="_blank" rel="noopener noreferrer">Source code on GitHub</a>
           </div>
           <div>
             <h4>Account</h4>

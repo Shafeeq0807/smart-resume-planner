@@ -110,7 +110,7 @@ function RepoRow({ repo, onChange }: { repo: GithubRepo; onChange: (r: GithubRep
       <div className="row between">
         <label className="row" style={{ margin: 0 }}>
           <input type="checkbox" style={{ width: "auto" }} checked={repo.includedInResume} onChange={(e) => onChange(repo, { includedInResume: e.target.checked, suggestedBullet: bullet })} />
-          <a href={repo.url} target="_blank" rel="noreferrer">{repo.name}</a></label>
+          {repo.url.startsWith("https://") ? <a href={repo.url} target="_blank" rel="noopener noreferrer">{repo.name}</a> : <span>{repo.name}</span>}</label>
         <span className="row" style={{ gap: 6 }}>
           {repo.primaryLanguage && <Badge tone="blue">{repo.primaryLanguage}</Badge>}<Badge>★ {repo.stars}</Badge>
           {repo.readmeQualityScore != null && <Badge tone={repo.readmeQualityScore >= 60 ? "green" : "amber"}>README {repo.readmeQualityScore}</Badge>}

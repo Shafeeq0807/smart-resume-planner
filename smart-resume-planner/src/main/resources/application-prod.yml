@@ -1,0 +1,20 @@
+# Production overrides. Combine with an AI profile, e.g. SPRING_PROFILES_ACTIVE=aiml,prod
+server:
+  # Trust X-Forwarded-* headers so the auth rate limiter sees the real client IP.
+  # Only enable behind a reverse proxy you control; otherwise the header can be spoofed.
+  forward-headers-strategy: native
+
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
